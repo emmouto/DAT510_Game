@@ -31,6 +31,7 @@ public class GridManager : MonoBehaviour {
         for (int x = 0; x < gridX; x++) {
             for (int y = 0; y < gridY; y++) {
                 GameObject newTile = Instantiate(tile, new Vector3(startX + (offsetX * x), startY + (offsetY * y), 0), tile.transform.rotation);
+                newTile.name = "Tile " + x + "," + y;
                 grid[x, y] = newTile;
                 newTile.transform.parent = transform;
 
