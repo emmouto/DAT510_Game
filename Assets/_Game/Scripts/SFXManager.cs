@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Clip {Select, Swap};
+public enum Clip {Select, Swap, Clear};
 
 public class SFXManager : MonoBehaviour {
     public static SFXManager instance;
