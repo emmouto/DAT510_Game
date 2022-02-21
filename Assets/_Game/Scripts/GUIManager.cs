@@ -11,7 +11,7 @@ public class GUIManager : MonoBehaviour {
 
     private int score;
     private int moveCounter;
-    public int maxMoves;
+    private int maxMoves;
 
     private int fireScore;
     private int earthScore;
@@ -44,6 +44,7 @@ public class GUIManager : MonoBehaviour {
 
     void Awake() {
         instance = GetComponent<GUIManager>();
+        maxMoves = 30;
         moveCounter = 1;
         moveCounterText.text = "Move " + moveCounter.ToString() + " / " + maxMoves.ToString();
     }
