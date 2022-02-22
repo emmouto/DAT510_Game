@@ -66,29 +66,27 @@ public class GridManager : MonoBehaviour {
         }
     }
 
-    // Shifts tiles down and refills the board.
     private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .03f) {
         IsShifting = true;
+        List<SpriteRenderer> renders = new List<SpriteRenderer>();
         int nullCount = 0;
-        List<SpriteRenderer> renderers = new List<SpriteRenderer>();
 
-        for (int y = yStart; y < gridY; y++) {  
-            SpriteRenderer spriteRenderer = grid[x, y].GetComponent<SpriteRenderer>();
+        for (int y = yStart; y < gridY; y++) {  // 1
+            SpriteRenderer render = grid[x, y].GetComponent<SpriteRenderer>();
 
-            if (spriteRenderer.sprite == null) {
+            if (render.sprite == null) {
                 nullCount++;
             }
 
-            renderers.Add(spriteRenderer);
+            renders.Add(render);
         }
 
         for (int i = 0; i < nullCount; i++) {
             yield return new WaitForSeconds(shiftDelay);
-            GUIManager.instance.Score += 50;
 
-            for (int k = 0; k < renderers.Count - 1; k++) {
-                renderers[k].sprite = renderers[k + 1].sprite;
-                renderers[k + 1].sprite = GetNewSprite(x, gridY - 1);
+            for (int k = 0; k < renders.Count - 1; k++) { 
+                renders[k].sprite = renders[k + 1].sprite;
+                renders[k + 1].sprite = GetNewSprite(x, gridY - 1);
             }
         }
 
