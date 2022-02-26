@@ -4,7 +4,6 @@ public enum Clip {Select, Swap, Clear};
 
 public class SFXManager : MonoBehaviour {
     public static SFXManager instance;
-
     private AudioSource[] sfx;
 
     // Use this for initialization

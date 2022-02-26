@@ -24,7 +24,11 @@ public class InfusionBarManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        CurrentValue += 0.0043f;
+        // unsure if I'll even use this, probably not
+    }
+
+    public void fillBar() {
+        CurrentValue += 0.05f; // temp value, makes the jump from 0 look not shit due to the colour spilling outside of the border
     }
 }
 

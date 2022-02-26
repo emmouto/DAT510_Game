@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour {
 
     private bool isSelected = false;
     private bool matchFound = false;
+    private int elementalScoreMultiplier;
 
     private SpriteRenderer spriteRenderer;
     private Vector2[] adjacentDirections = new Vector2[]{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
@@ -30,10 +31,7 @@ public class Tile : MonoBehaviour {
     }
 
     void OnMouseDown() {
-        if (spriteRenderer.sprite == null || GridManager.instance.IsShifting) {
-            Debug.Log("1");
-            return;
-        }
+        if (spriteRenderer.sprite == null || GridManager.instance.IsShifting) { return; }
 
         if (isSelected) {
             Deselect();
@@ -57,7 +55,6 @@ public class Tile : MonoBehaviour {
     }
 
     public void SwapSprite(SpriteRenderer spriteRenderer2) {
-        Debug.Log("SwapSprite");
         if (spriteRenderer.sprite == spriteRenderer2.sprite) { 
             return;
         }
@@ -74,7 +71,6 @@ public class Tile : MonoBehaviour {
         // https://stackoverflow.com/questions/38191659/unity-physics2d-raycast-hits-itself if it still hits itself this is why
 
         if (hit.collider != null) {
-            Debug.Log("hit.collider.gameObject: " + hit.collider.gameObject);
             return hit.collider.gameObject;
         }
 
@@ -116,20 +112,29 @@ public class Tile : MonoBehaviour {
             }
 
             matchFound = true;
+            elementalScoreMultiplier = matchingTiles.Count + 1;
         }
     }
 
     public void ClearAllMatches() {
-        if (spriteRenderer.sprite == null)
-            return;
+        if (spriteRenderer.sprite == null) { return; }
 
         ClearMatch(new Vector2[2]{Vector2.left, Vector2.right});
         ClearMatch(new Vector2[2]{Vector2.up, Vector2.down});
 
         if (matchFound) {
+            string spriteName = spriteRenderer.sprite.name;
+            InfusionBarManager infusionBar = (GameObject.Find(spriteName)).GetComponent<InfusionBarManager>();
+            int elementalScore = GUIManager.instance.getElementalScore(spriteName);
+
+            for (int i = 0; i < elementalScoreMultiplier; i++) {
+                elementalScore += 50;
+                infusionBar.fillBar();
+            }
+
             spriteRenderer.sprite = null;
             matchFound = false;
             SFXManager.instance.PlaySFX(Clip.Clear);
-        }
+        } 
     }
 }

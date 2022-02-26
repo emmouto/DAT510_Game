@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GUIManager : MonoBehaviour {
@@ -11,7 +12,7 @@ public class GUIManager : MonoBehaviour {
 
     private int score;
     private int moveCounter;
-    private int maxMoves;
+    public int maxMoves;
 
     private int fireScore;
     private int earthScore;
@@ -31,6 +32,26 @@ public class GUIManager : MonoBehaviour {
         }
     }
 
+    // Might not need this idk but I'll keep it for now since I wasted a minute writing it
+    public int getElementalScore(string element) {
+        switch (element) {
+            case "Fire":
+                return fireScore;
+            case "Earth":
+                return earthScore;
+            case "Water":
+                return waterScore;
+            case "Air":
+                return earthScore;
+            case "Light":
+                return lightScore;
+            case "Dark":
+                return darkScore;
+            default:
+                return score;
+        }
+    }
+
     public int MoveCounter {
         get {
             return moveCounter;
@@ -38,15 +59,28 @@ public class GUIManager : MonoBehaviour {
 
         set {
             moveCounter = value;
+            if (moveCounter >= maxMoves) {
+                moveCounter = 0;
+                StartCoroutine(WaitForShifting());
+            }
             moveCounterText.text = "Move " + moveCounter.ToString() + " / " + maxMoves.ToString();
         }
     }
 
     void Awake() {
         instance = GetComponent<GUIManager>();
-        maxMoves = 30;
         moveCounter = 1;
         moveCounterText.text = "Move " + moveCounter.ToString() + " / " + maxMoves.ToString();
+    }
+
+    private IEnumerator WaitForShifting() {
+        yield return new WaitUntil(() => !GridManager.instance.IsShifting);
+        yield return new WaitForSeconds(.25f);
+        GameFinished();
+    }
+
+    private void GameFinished() {
+        SceneManager.LoadScene(sceneName: "Match3-Crafting");
     }
 
 }
