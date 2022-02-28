@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,15 +12,10 @@ public class GUIManager : MonoBehaviour {
     public TMP_Text moveCounterText;
 
     private int score;
+    private int scoreGoal;
     private int moveCounter;
-    public int maxMoves;
-
-    private int fireScore;
-    private int earthScore;
-    private int waterScore;
-    private int airScore;
-    private int lightScore;
-    private int darkScore;
+    private int maxMoves;
+    private bool potionSuccess;
 
     public int Score {
         get {
@@ -32,25 +28,7 @@ public class GUIManager : MonoBehaviour {
         }
     }
 
-    // Might not need this idk but I'll keep it for now since I wasted a minute writing it
-    public int getElementalScore(string element) {
-        switch (element) {
-            case "Fire":
-                return fireScore;
-            case "Earth":
-                return earthScore;
-            case "Water":
-                return waterScore;
-            case "Air":
-                return earthScore;
-            case "Light":
-                return lightScore;
-            case "Dark":
-                return darkScore;
-            default:
-                return score;
-        }
-    }
+    public bool getPotionSuccess() { return potionSuccess; }
 
     public int MoveCounter {
         get {
@@ -69,7 +47,10 @@ public class GUIManager : MonoBehaviour {
 
     void Awake() {
         instance = GetComponent<GUIManager>();
+        setElements();
         moveCounter = 1;
+        maxMoves = 15;
+        scoreGoal = 1000;
         moveCounterText.text = "Move " + moveCounter.ToString() + " / " + maxMoves.ToString();
     }
 
@@ -80,7 +61,54 @@ public class GUIManager : MonoBehaviour {
     }
 
     private void GameFinished() {
+        if (score >= scoreGoal) {
+            potionSuccess = true;
+        } else {
+            potionSuccess = false;
+        }
+        
         SceneManager.LoadScene(sceneName: "Match3-Crafting");
     }
 
+    /** Currently Making **/
+    List<Elements> goodElements = new List<Elements>();
+    List<Elements> badElements = new List<Elements>();
+    List<Elements> neutralElements = new List<Elements>();
+    List<Elements> allElements = new List<Elements>();
+
+    private void setElements() {
+        // temp
+        goodElements.Add(Elements.Earth); 
+        goodElements.Add(Elements.Water);
+        allElements.Add(Elements.Earth); 
+        allElements.Add(Elements.Water);
+        
+        foreach (Elements e in goodElements) {
+            badElements.Add(e.opposite());
+            allElements.Add(e.opposite());
+        }
+
+        if (allElements.Count < 5) {
+            foreach (Elements e in Enum.GetValues(typeof(Elements))) {
+                if (!allElements.Contains(e)) {
+                    neutralElements.Add(e);
+                }
+            }
+        }
+    }
+
+    public void addScore(string e1) {
+        Elements e2;
+        Enum.TryParse<Elements>(e1, true,  out e2);
+
+        if (goodElements.Contains(e2)) {
+            score += 100;
+        } else if (badElements.Contains(e2)) {
+            score += 10;
+        } else {
+            score += 50;
+        }
+
+        scoreText.text = score.ToString();
+    }
 }

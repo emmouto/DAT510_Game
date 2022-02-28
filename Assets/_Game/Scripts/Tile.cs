@@ -125,11 +125,10 @@ public class Tile : MonoBehaviour {
         if (matchFound) {
             string spriteName = spriteRenderer.sprite.name;
             InfusionBarManager infusionBar = (GameObject.Find(spriteName)).GetComponent<InfusionBarManager>();
-            int elementalScore = GUIManager.instance.getElementalScore(spriteName);
 
             for (int i = 0; i < elementalScoreMultiplier; i++) {
-                elementalScore += 50;
                 infusionBar.fillBar();
+                GUIManager.instance.addScore(spriteName);
             }
 
             spriteRenderer.sprite = null;

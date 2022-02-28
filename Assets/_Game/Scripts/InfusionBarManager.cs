@@ -28,7 +28,7 @@ public class InfusionBarManager : MonoBehaviour {
     }
 
     public void fillBar() {
-        CurrentValue += 0.05f; // temp value, makes the jump from 0 look not shit due to the colour spilling outside of the border
+        CurrentValue += 0.05f; 
     }
 }
 

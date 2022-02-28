@@ -84,7 +84,6 @@ public class GridManager : MonoBehaviour {
 
         for (int i = 0; i < nullCount; i++) {
             yield return new WaitForSeconds(shiftDelay);
-            GUIManager.instance.Score += 50;
 
             for (int k = 0; k < renderers.Count - 1; k++) {
                 renderers[k].sprite = renderers[k + 1].sprite;
