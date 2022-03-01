@@ -3,46 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class pulseRing : MonoBehaviour
-{
+public class pulseRing : MonoBehaviour{
+
+    //particle system
     private ParticleSystem ps;
-    public float hSliderValue = 0.5F;
+    //public float hSliderValue = 0.5F;
     public ParticleSystem.Particle[] outArray;
-
-    public Button qteButton;
-    public float timer = 0;
-    public bool accelerate = false;
-    public GameObject popUpPanel;
     public float particleSize;
-
     public float sizeOfParticle;
 
-/* public float maxTimer;
- public float minTimer;
+    //button
+    public Button qteButton;
+    public bool accelerate = false;
 
- //ParticleSystem.MinMaxCurve.Evaluate ASK THEM*/
+    //Messagebox
+    public GameObject popUpPanel;
+    public Text popUpText;
 
 
 
-void Start() {
-        
+    
+
+    /* public float maxTimer;
+     public float minTimer;
+
+     //ParticleSystem.MinMaxCurve.Evaluate ASK THEM*/
+
+
+
+    void Start() {
         ps = GameObject.Find("PulseRing").GetComponent<ParticleSystem>();
         outArray = new ParticleSystem.Particle[1000];
         ButtonClicked();
     }
 
-    public float SizeParticle()
-    {
+    public float SizeParticle(){
         ps.GetParticles(outArray);
         particleSize = outArray[0].GetCurrentSize(ps);
         return particleSize;
     }
 
-    void Update()
-    {
-
-       // var main = ps.main;
-        //main.simulationSpeed = hSliderValue;
+    void Update(){
 
         sizeOfParticle = SizeParticle();
         
@@ -53,20 +54,20 @@ void Start() {
     public void ButtonClicked(){
 
 
-        this.GetComponent<Image>().alphaHitTestMinimumThreshold = 0.2f;  //can't click outside of image
+        //this.GetComponent<Image>().alphaHitTestMinimumThreshold = 0.2f;  //can't click outside of image
         qteButton.onClick.AddListener(() =>
         {
-
-            if (sizeOfParticle > 1.045 && sizeOfParticle < 1.5)
-            {
-                Debug.Log("Button is clicked well");
+            if (sizeOfParticle > 1.045 && sizeOfParticle < 1.5){
 
                 popUpPanel.SetActive(true);
+                popUpText.text = "Good job! Your potion will be made well :)";
+
+
             }
             else if (sizeOfParticle > 1.5){
-                Debug.Log("Button is clicked bad");
-                popUpPanel.SetActive(true);
 
+                popUpPanel.SetActive(true);
+                popUpText.text = "Better luck next time! Your potion will not be made well :( ";
             }
 
 
@@ -74,8 +75,5 @@ void Start() {
 
     }
 
-    /*void OnGUI()
-    {
-        hSliderValue = GUI.HorizontalSlider(new Rect(500, 50, 100, 30), hSliderValue, 0.0F, 5.0F);
-    }*/
+    
 }

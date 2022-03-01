@@ -34,7 +34,7 @@ public class QTEButton : MonoBehaviour{
             
             if (timer > 0.001 & timer < 0.1) 
             {
-                Debug.Log("Button is clicked well");
+                Debug.Log("Button is clicked badly");
 
                 popUpPanel.SetActive(true);
             }
