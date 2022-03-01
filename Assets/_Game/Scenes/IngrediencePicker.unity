@@ -2186,7 +2186,7 @@ GameObject:
   - component: {fileID: 1176637137}
   - component: {fileID: 1176637136}
   - component: {fileID: 1176637135}
-  - component: {fileID: 1176637134}
+  - component: {fileID: 1176637139}
   - component: {fileID: 1176637138}
   m_Layer: 0
   m_Name: Plane (1)
@@ -2195,20 +2195,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1176637134
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176637133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1176637135
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2555,6 +2541,20 @@ MonoBehaviour:
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
   eventHandlerComponentsAdded: 0
+--- !u!64 &1176637139
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176637133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1218142524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,6 +2841,7 @@ GameObject:
   - component: {fileID: 1458125267}
   - component: {fileID: 1458125266}
   - component: {fileID: 1458125265}
+  - component: {fileID: 1458125269}
   m_Layer: 5
   m_Name: CreatePotionButton
   m_TagString: Untagged
@@ -3569,6 +3570,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458125263}
   m_CullTransparentMesh: 1
+--- !u!114 &1458125269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458125263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c842823b26dc4499034fd7457c6e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 1458125266}
 --- !u!1 &1554654013
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Game/Scenes/Start.unity
+    guid: a275351e7c865ff4c9a727858b129d20
+  - enabled: 1
+    path: Assets/_Game/Scenes/IngrediencePicker.unity
+    guid: 770a4a9a76b0f4b20aaa29faaf1c21ed
+  - enabled: 1
     path: Assets/_Game/Scenes/Match3.unity
     guid: 2080aae028129c147ab03ec4561ae384
   - enabled: 1
@@ -17,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/TotalScore.unity
     guid: 326853108012eca499d4e4a95decab10
-  - enabled: 1
-    path: Assets/_Game/Scenes/IngrediencePicker.unity
-    guid: 770a4a9a76b0f4b20aaa29faaf1c21ed
   m_configObjects: {}

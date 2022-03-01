@@ -16,7 +16,6 @@ public class GridManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         instance = GetComponent<GridManager>(); // Singleton instance of the GridManager
-
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
         initGrid(offset.x, offset.y);
     }
@@ -24,6 +23,9 @@ public class GridManager : MonoBehaviour {
     // Creates a grid with non-repeating tiles.
     private void initGrid(float offsetX, float offsetY) {
         grid = new GameObject[gridX, gridY]; // Create 8x8 grid
+
+        offsetX += 0.125f;
+        offsetY += 0.125f;
 
         float startX = transform.position.x;
         float startY = transform.position.y;
