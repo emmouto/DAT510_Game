@@ -32,10 +32,10 @@ public class QTEButton : MonoBehaviour{
                                                                                //testa particle system curves 0.4
 
             
-            if (timer > 0.000953 & timer < 0.0015754)
+            if (timer > 0.001 & timer < 0.1) 
             {
-                Debug.Log("Button is clicked well");
-                SFXManager.instance.PlaySFX(Clip.Clear);
+                Debug.Log("Button is clicked badly");
+
                 popUpPanel.SetActive(true);
             }
 
@@ -61,7 +61,7 @@ public class QTEButton : MonoBehaviour{
     }*/
 
     // Update is called once per frame
-    void Update(){
+    void FixedUpdate(){
         timer = Time.deltaTime;
 
      
