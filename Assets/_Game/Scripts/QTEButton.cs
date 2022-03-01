@@ -14,6 +14,8 @@ public class QTEButton : MonoBehaviour{
     public float maxTimer;
     public float minTimer;
 
+    //ParticleSystem.MinMaxCurve.Evaluate ASK THEM
+
 
     // Start is called before the first frame update
     void Start(){
