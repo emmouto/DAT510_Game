@@ -35,7 +35,7 @@ public class QTEButton : MonoBehaviour{
             if (timer > 0.000953 & timer < 0.0015754)
             {
                 Debug.Log("Button is clicked well");
-
+                SFXManager.instance.PlaySFX(Clip.Clear);
                 popUpPanel.SetActive(true);
             }
 

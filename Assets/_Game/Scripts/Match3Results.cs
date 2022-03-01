@@ -24,6 +24,7 @@ public class Match3Results : MonoBehaviour {
     }
 
     void TaskOnClick(){
+        SFXManager.instance.PlaySFX(Clip.Select);
         SceneManager.LoadScene(sceneName: "QuickTE"); // TODO Change to rhythm game scene
     }
 }

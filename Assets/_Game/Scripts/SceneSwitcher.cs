@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public void showScore() { 
-            SceneManager.LoadScene("TotalScore");
-
-        }
+    public void showScore() {
+        SFXManager.instance.PlaySFX(Clip.Select);
+        SceneManager.LoadScene("TotalScore");
+    }
         
 
 }
