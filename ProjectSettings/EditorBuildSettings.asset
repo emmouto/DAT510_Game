@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Match3-Crafting.unity
     guid: 88545d024fd20b34cbed95bee7ac15d4
+  - enabled: 1
+    path: Assets/_Game/Scenes/QuickTE.unity
+    guid: f090cbe3d81e0cf44aa491bdcd932209
+  - enabled: 1
+    path: Assets/_Game/Scenes/TotalScore.unity
+    guid: 326853108012eca499d4e4a95decab10
+  - enabled: 1
+    path: Assets/_Game/Scenes/IngrediencePicker.unity
+    guid: 770a4a9a76b0f4b20aaa29faaf1c21ed
   m_configObjects: {}
