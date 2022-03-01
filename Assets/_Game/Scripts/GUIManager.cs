@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,12 @@ public class GUIManager : MonoBehaviour {
     private int moveCounter;
     private int maxMoves;
     private bool potionSuccess;
+
+    List<Elements> goodElements = new();
+    List<Elements> badElements = new();
+    List<Elements> neutralElements = new();
+    List<Elements> allElements = new();
+    List<Elements> matchHistory = new();
 
     public int Score {
         get {
@@ -50,7 +57,7 @@ public class GUIManager : MonoBehaviour {
         setElements();
         moveCounter = 1;
         maxMoves = 15;
-        scoreGoal = 1000;
+        scoreGoal = 1500;
         moveCounterText.text = "Move " + moveCounter.ToString() + " / " + maxMoves.ToString();
     }
 
@@ -69,12 +76,6 @@ public class GUIManager : MonoBehaviour {
         
         SceneManager.LoadScene(sceneName: "Match3-Crafting");
     }
-
-    /** Currently Making **/
-    List<Elements> goodElements = new List<Elements>();
-    List<Elements> badElements = new List<Elements>();
-    List<Elements> neutralElements = new List<Elements>();
-    List<Elements> allElements = new List<Elements>();
 
     private void setElements() {
         // temp
@@ -100,15 +101,18 @@ public class GUIManager : MonoBehaviour {
     public void addScore(string e1) {
         Elements e2;
         Enum.TryParse<Elements>(e1, true,  out e2);
+        int additionalScore = 0;
 
         if (goodElements.Contains(e2)) {
-            score += 100;
+            additionalScore += 100;
         } else if (badElements.Contains(e2)) {
-            score += 10;
+            additionalScore += 10;
         } else {
-            score += 50;
+            additionalScore += 50;
         }
 
+        score += additionalScore;
+        matchHistory.Add(e2);
         scoreText.text = score.ToString();
     }
 }
