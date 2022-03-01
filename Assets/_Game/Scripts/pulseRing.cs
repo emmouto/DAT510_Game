@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class pulseRing : MonoBehaviour{
-
+public class pulseRing : MonoBehaviour {
     //particle system
     private ParticleSystem ps;
     //public float hSliderValue = 0.5F;
@@ -20,16 +19,10 @@ public class pulseRing : MonoBehaviour{
     public GameObject popUpPanel;
     public Text popUpText;
 
-
-
-    
-
     /* public float maxTimer;
      public float minTimer;
 
      //ParticleSystem.MinMaxCurve.Evaluate ASK THEM*/
-
-
 
     void Start() {
         ps = GameObject.Find("PulseRing").GetComponent<ParticleSystem>();
@@ -37,43 +30,28 @@ public class pulseRing : MonoBehaviour{
         ButtonClicked();
     }
 
-    public float SizeParticle(){
+    public float SizeParticle() {
         ps.GetParticles(outArray);
         particleSize = outArray[0].GetCurrentSize(ps);
         return particleSize;
     }
 
-    void Update(){
-
+    void Update() {
         sizeOfParticle = SizeParticle();
-        
        // Debug.Log(SizeParticle);
     }
 
 
-    public void ButtonClicked(){
-
-
+    public void ButtonClicked() {
         //this.GetComponent<Image>().alphaHitTestMinimumThreshold = 0.2f;  //can't click outside of image
-        qteButton.onClick.AddListener(() =>
-        {
-            if (sizeOfParticle > 1.045 && sizeOfParticle < 1.5){
-
+        qteButton.onClick.AddListener(() => {
+            if (sizeOfParticle > 1.045 && sizeOfParticle < 1.5){ 
                 popUpPanel.SetActive(true);
                 popUpText.text = "Good job! Your potion will be made well :)";
-
-
-            }
-            else if (sizeOfParticle > 1.5){
-
+            } else if (sizeOfParticle > 1.5){
                 popUpPanel.SetActive(true);
                 popUpText.text = "Better luck next time! Your potion will not be made well :( ";
             }
-
-
         });
-
     }
-
-    
 }
