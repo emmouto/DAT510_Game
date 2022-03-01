@@ -25,9 +25,9 @@ public class PopUp : MonoBehaviour
         transform.localScale = Vector3.one;
 
 
-        button1.onClick.AddListener(() =>{
-            GameObject.Destroy(this.gameObject);
-        });
+        //button1.onClick.AddListener(() =>{
+        //    GameObject.Destroy(this.gameObject);
+        //});
 
 
     }
