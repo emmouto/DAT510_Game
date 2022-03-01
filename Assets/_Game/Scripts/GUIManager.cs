@@ -57,7 +57,7 @@ public class GUIManager : MonoBehaviour {
         setElements();
         moveCounter = 1;
         maxMoves = 15;
-        scoreGoal = 1500;
+        scoreGoal = 3000;
         moveCounterText.text = "Move " + moveCounter.ToString() + " / " + maxMoves.ToString();
     }
 

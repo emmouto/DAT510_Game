@@ -17,12 +17,10 @@ public class StartScreen : MonoBehaviour {
     }
     void TaskOnClick1() {
         Debug.Log("Tutorial button click!");
-        Application.OpenURL("google.com");
+        Application.OpenURL("https://www.google.com/");
     }
     void TaskOnClick2() {
         Debug.Log("Tutorial button click!");
         SceneManager.LoadScene(sceneName: "IngrediencePicker");
-    }
-    
-    
+    } 
 }

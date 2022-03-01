@@ -13,7 +13,7 @@ public class Match3Results : MonoBehaviour {
         if (GUIManager.instance.getPotionSuccess()) { 
             successOrFailureText.text = "Success! :)";
         } else {
-            successOrFailureText.text = "Failure!";
+            successOrFailureText.text = "Failure :(";
         }
 
     }

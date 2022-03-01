@@ -3,22 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuitApp : MonoBehaviour
-{
-
-   
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+public class QuitApp : MonoBehaviour {
+    public void QuitGame() {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
             Application.Quit();
-        }
-    }
-
-    public void QuitGame()
-    {
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
