@@ -29,13 +29,14 @@ public class QTEButton : MonoBehaviour{
             //"x"
             //);
 
-
-                                                                                                                //testa particle system curves 0.4
+                                                                               //testa particle system curves 0.4
 
             
             if (timer > 0.000953 & timer < 0.0015754)
             {
                 Debug.Log("Button is clicked well");
+
+                popUpPanel.SetActive(true);
             }
 
             //else if (timer > 0.0015754 & timer < 0.000953){
@@ -47,10 +48,10 @@ public class QTEButton : MonoBehaviour{
 
     }
 
-    void onTimeClick() {
-            Debug.Log("You get a very well formed potion");
+   /* void onTimeClick() {
+        Debug.Log("You get a very well formed potion");
 
-    }
+    }*/
 
    
 

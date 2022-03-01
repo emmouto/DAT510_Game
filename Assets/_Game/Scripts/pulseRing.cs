@@ -10,12 +10,16 @@ public class pulseRing : MonoBehaviour
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        
     }
 
     void Update()
     {
         var main = ps.main;
         main.simulationSpeed = hSliderValue;
+
+        //float size = ps.
+
     }
 
     void OnGUI()
