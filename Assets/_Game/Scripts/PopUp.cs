@@ -6,9 +6,9 @@ using System;
 
 public class PopUp : MonoBehaviour
 {
-   /* public GameObject popUpBox;
-    public Animator animator;
-   */
+   public GameObject popUpBox;
+    //public Animator animator;
+   
 
     [SerializeField] Button button1; //close
     [SerializeField] Button button2; //continue
@@ -29,9 +29,17 @@ public class PopUp : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         });
 
-       
 
     }
+
+    public void cancelClick(Button button){
+        button.onClick.AddListener(() =>
+        {
+            popUpBox.SetActive(false);
+        });
+    }
+
+  
 
     //void Start()  {
     //    Button button = GetComponent<Button>();
