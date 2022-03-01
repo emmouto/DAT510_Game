@@ -112,3 +112,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+UserSettings/EditorUserSettings.asset
+UserSettings/Search.settings
+UserSettings
