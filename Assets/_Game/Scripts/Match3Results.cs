@@ -24,6 +24,6 @@ public class Match3Results : MonoBehaviour {
     }
 
     void TaskOnClick(){
-        SceneManager.LoadScene(sceneName: "Match3"); // TODO Change to rhythm game scene
+        SceneManager.LoadScene(sceneName: "QuickTE"); // TODO Change to rhythm game scene
     }
 }
